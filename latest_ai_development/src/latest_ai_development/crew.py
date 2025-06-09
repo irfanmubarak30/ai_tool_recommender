@@ -74,3 +74,4 @@ class LatestAiDevelopment():
             verbose=True,
             # process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
         )
+.
