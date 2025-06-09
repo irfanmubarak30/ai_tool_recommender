@@ -1,0 +1,36 @@
+analyze_task:
+  description: >
+    Analyze this task: "{task_description}".
+    Determine AI capabilities needed and output JSON with:
+    - task_type (text, image, audio, video, multimodal, code, data)
+    - complexity_level (1-5)
+    - real_time_needed (boolean)
+    - budget_range (low/medium/high)
+    - integration_complexity (simple/moderate/complex)
+    - specific_requirements (array)
+  expected_output:  JSON format requirements
+  agent: task_analyzer
+
+research_task:
+  description: >
+    Find AI tools matching requirements: {task_description}
+    Research across categories:
+    - Text: OpenAI, Anthropic, Google, local models
+    - Image: DALL-E, Midjourney, Stable Diffusion, etc.
+    - Audio: Whisper, ElevenLabs, etc.
+    - Video: RunwayML, Pika, etc.
+    - Code: GitHub Copilot, CodeT5, etc.
+    - Multimodal: GPT-4V, Gemini, etc.
+  expected_output: "Comparison table with capabilities, pricing, and pros/cons"
+  agent: ai_researcher
+
+recommend_task:
+  description: >
+    Based on task requirements and research, recommend:
+    - Primary AI tool(s)
+    - Alternative options
+    - Cost breakdown
+    - Implementation approach
+    - Potential limitations
+  expected_output: "Detailed recommendation report with justification"
+  agent: recommender
