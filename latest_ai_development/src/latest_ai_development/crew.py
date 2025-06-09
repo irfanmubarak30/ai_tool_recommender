@@ -1,10 +1,19 @@
 from crewai import Agent, Crew, Process, Task
+import os
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
+from crewai_tools import ScrapeWebsiteTool
+from crewai.llm import LLM
 from typing import List
+
+
+os.environ["OPENAI_API_KEY"] = "your_api_key_here"
+
+llm = LLM(model="gpt-4-turbo")
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
+scrape_tool = ScrapeWebsiteTool()
 
 @CrewBase
 class LatestAiDevelopment():
@@ -30,6 +39,8 @@ class LatestAiDevelopment():
     def ai_researcher(self) -> Agent:
         return Agent(
             config=self.agents_config['ai_researcher'], # type: ignore[index]
+            tools=[scrape_tool],
+            llm=llm,
             verbose=True
         )
 
