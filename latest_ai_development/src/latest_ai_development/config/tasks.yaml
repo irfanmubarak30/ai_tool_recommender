@@ -32,6 +32,7 @@ recommend_task:
     - Cost breakdown
     - Implementation approach
     - Potential limitations
+    and provide website url
   expected_output: "Detailed recommendation report with justification"
   agent: recommender
   
